@@ -1,0 +1,22 @@
+.box-container {
+    display: block;
+    margin: 30px auto 0 auto;
+    background-color: #FFF;
+}
+
+.box-row {
+    display: block;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.box {
+    font-family: sans-serif;
+    display: inline-block;
+    
+    width: 49px;
+    height: 49px;
+    border: solid #000 1px;
+    
+    margin: 0 5px 5px 5px;
+}

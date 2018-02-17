@@ -1,4 +1,14 @@
-const boxContainer = document.querySelector("#box-continer");
+const boxContainer = document.querySelector(".box-container");
 
-const box = document.createElement("div");
-boxContainer.appendChild(box);
+for (let i = 0; i < 4; i++) {
+    const boxRow = document.createElement("div");
+    boxRow.classList += " box-row";
+    
+    for (let j = 0; j < 4; j++) {
+        const box = document.createElement("div");
+        box.classList += " box";
+        boxRow.appendChild(box);
+    }
+    boxContainer.appendChild(boxRow);
+}
+
