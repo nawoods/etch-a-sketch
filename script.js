@@ -1,18 +1,44 @@
-const boxContainer = document.querySelector(".box-container");
-
-for (let i = 0; i < 4; i++) {
-    const boxRow = document.createElement("div");
-    boxRow.classList += " box-row";
+function changeResolution(numberOfSquares) {
+    const boxWidth = Math.floor(sketchpadWidth / numberOfSquares);
+    boxContainer.innerHTML = "";
     
-    for (let j = 0; j < 4; j++) {
-        const box = document.createElement("div");
-        box.classList += " box";
-        box.addEventListener("mouseover", mouseOverBox);
-        boxRow.appendChild(box);
-    }
-    boxContainer.appendChild(boxRow);
+    for (let i = 0; i < numberOfSquares; i++) {
+        const boxRow = document.createElement("div");
+        boxRow.classList += " box-row";
+        boxRow.style.height = boxWidth + "px";
+        
+        for (let j = 0; j < numberOfSquares; j++) {
+            const box = document.createElement("div");
+            box.classList += " box";
+            box.style.width = boxWidth + "px";
+            box.style.height = boxWidth + "px";
+            box.addEventListener("mouseover", toggleBoxColor);
+            boxRow.appendChild(box);
+        }
+        boxContainer.appendChild(boxRow);
 }
-
-function mouseOverBox() {
+    
+}
+function toggleBoxColor() {
     this.classList.toggle("active-box");
 }
+
+function submitNumber() {
+    const numberOfSquares = numberInput.value;
+    if (isNaN(numberOfSquares)) return;
+    changeResolution(numberOfSquares);
+}
+
+const sketchpadWidth = 420;
+
+const boxContainer = document.querySelector(".box-container");
+const numberInput = document.querySelector(".number-input");
+const numberSubmit = document.querySelector(".number-submit");
+
+boxContainer.style.width = sketchpadWidth + "px";
+boxContainer.style.height = sketchpadWidth + "px";
+
+
+numberSubmit.addEventListener("click", submitNumber);
+
+changeResolution(4);
